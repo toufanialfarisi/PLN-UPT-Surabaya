@@ -1,54 +1,122 @@
 {% extends "layout.html" %}
 {% block content %}
 <main role='main' style="margin-top: 10px; margin-bottom: 10px;">
-    <div class="container">
-        <div class="row">
-            <div class="col" id="carding">
-                <legend class="border-bottom mb-2">{{namaGI}}</legend>
-                
-                <table class="table table-borderless">
-                    <tbody>
-                      <tr>
-                        <td>ULTG</td>
-                        <td>:</td>
-                        <td>{{ ultg }}</td>
-                      </tr>
-                      <tr>
-                        <td>Status Operasi</td>
-                        <td>:</td>
-                        <td>{{ statusOperasi }}</td>
-                      </tr>
-                      <tr>
-                        <td>ID Functloc</td>
-                        <td>:</td>
-                        <td>{{ idFunctloc }}</td>
-                      </tr>
-                      <tr>
-                        <td>Tegangan</td>
-                        <td>:</td>
-                        <td>{{ tegangan }} KV</td>
-                      </tr>
-                      <tr>
-                        <td>Tanggal Operasi</td>
-                        <td>:</td>
-                        <td>{{ tglOperasi }}</td>
-                      </tr>
-                      <tr>
-                        <td>Alamat</td>
-                        <td>:</td>
-                        <td>{{ alamat }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                
-            </div>
-
-            <div class="col">
-                
-                {% include "map_detail.html" %}
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6" id="carding">
+        <div class="table-responsive" style="font-size: 14px;">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>BAY</th>
+                <th>FUNGSI</th>
+                <th>ID_FUNCTLOC</th>
+                <th>SUP_FUNCTLOC</th>
+                <th>NM_LOKASI</th>
+                <th>DESKRIPSI</th>
+                <th>ID_LOCATION</th>
+                <th>ID_PARENT</th>
+                <th>TEGANGAN</th>
+                <th>KD_FUNGSI</th>
+                <th>KD_WILAYAH</th>
+                <th>TGL_OPRS</th>
+                <th>TGL_TDK_OPRS</th>
+                <th>FLAG</th>
+                <th>WORKCENTER</th>
+                <th>ID_PLANT</th>
+                <th>ID_TRAGI</th>
+                <th>NOMORGI</th>
+                <th>KD_GROUPLOKASI</th>
+                <th>ID_SECTION</th>
+                <th>BOUND</th>
+                <th>BA_CODE</th>
+                <th>ASSET_LOKASI</th>
+                <th>BAYGROUP</th>
+                <th>MVA</th>
+                <th>NOSIRKIT</th>
+                <th>COSTCENTER</th>
+                <th>BC_FLC</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for GI_, BAY_, FUNGSI_, ID_FUNCTLOC_, SUP_FUNCTLOC_, NM_LOKASI_, DESKRIPSI_, ID_LOCATION_, ID_PARENT_, TEGANGAN_, KD_FUNGSI_, KD_WILAYAH_, TGL_OPRS_, TGL_TDK_OPRS_, FLAG_, WORKCENTER_, ID_PLANT_, ID_TRAGI_, NOMORGI_, KD_GROUPLOKASI_, ID_SECTION_, BOUND_, BA_CODE_, ASSET_LOKASI_, BAYGROUP_, MVA_, NOSIRKIT_, COSTCENTER_, BC_FLC_ in GI_LIST | zip(BAY_LIST, FUNGSI_LIST, ID_FUNCTLOC_LIST, SUP_FUNCTLOC_LIST, NM_LOKASI_LIST, DESKRIPSI_LIST, ID_LOCATION_LIST, ID_PARENT_LIST, TEGANGAN_LIST, KD_FUNGSI_LIST, KD_WILAYAH_LIST, TGL_OPRS_LIST, TGL_TDK_OPRS_LIST, FLAG_LIST, WORKCENTER_LIST, ID_PLANT_LIST, ID_TRAGI_LIST, NOMORGI_LIST, KD_GROUPLOKASI_LIST, ID_SECTION_LIST, BOUND_LIST, BA_CODE_LIST, ASSET_LOKASI_LIST, BAYGROUP_LIST, MVA_LIST, NOSIRKIT_LIST, COSTCENTER_LIST, BC_FLC_LIST) %}
+              <tr>
+                <td>{{BAY_}}</td>
+                <td>{{FUNGSI_}}</td>
+                <td>{{ID_FUNCTLOC_}}</td>
+                <td>{{SUP_FUNCTLOC_}}</td>
+                <td>{{NM_LOKASI_}}</td>
+                <td>{{DESKRIPSI_}}</td>
+                <td>{{ID_LOCATION_}}</td>
+                <td>{{ID_PARENT_}}</td>
+                <td>{{TEGANGAN_}}</td>
+                <td>{{KD_FUNGSI_}}</td>
+                <td>{{KD_WILAYAH_}}</td>
+                <td>{{TGL_OPRS_}}</td>
+                <td>{{TGL_TDK_OPRS_}}</td>
+                <td>{{FLAG_}}</td>
+                <td>{{WORKCENTER_}}</td>
+                <td>{{ID_PLANT_}}</td>
+                <td>{{ID_TRAGI_}}</td>
+                <td>{{NOMORGI_}}</td>
+                <td>{{KD_GROUPLOKASI_}}</td>
+                <td>{{ID_SECTION_}}</td>
+                <td>{{BOUND_}}</td>
+                <td>{{BA_CODE_}}</td>
+                <td>{{ASSET_LOKASI_}}</td>
+                <td>{{BAYGROUP_}}</td>
+                <td>{{MVA_}}</td>
+                <td>{{NOSIRKIT_}}</td>
+                <td>{{COSTCENTER_}}</td>
+                <td>{{BC_FLC_}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
 
+
+
+
+
+      </div>
+
+      <div class="col-md-6" style="width: 300px;">
+        <div class="content-section">
+          <legend class="border-bottom mb-2">{{namaGI}}</legend>
+
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <td>ULTG</td>
+                <td>:</td>
+                <td>{{ ultg }}</td>
+              </tr>
+              <tr>
+                <td>Tegangan</td>
+                <td>:</td>
+                <td>{{ tegangan }} KV</td>
+              </tr>
+              <tr>
+                <td>Tanggal Operasi</td>
+                <td>:</td>
+                <td>{{ tglOperasi }}</td>
+              </tr>
+              <tr>
+                <td>Alamat</td>
+                <td>:</td>
+                <td>{{ alamat }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="content-section">
+          {% include "map_detail.html" %}
+        </div>
+
+      </div>
     </div>
+
+  </div>
 </main>
 {% endblock %}

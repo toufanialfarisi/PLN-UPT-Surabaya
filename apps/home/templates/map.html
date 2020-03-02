@@ -41,7 +41,7 @@
     
     
     {% for longitude, latitude, gardu_induk, id in lons|zip(lats, gis, idx) %}
-    L.marker([{{latitude}}, {{longitude}}]).addTo(mymap).bindPopup("<a href='{{ url_for('home.gi_detail', url=id) }}'>{{ gardu_induk }}</a>");
+    L.marker([{{latitude}}, {{longitude}}]).addTo(mymap).bindPopup("<a href='{{ url_for('home.gi_detail', id=id) }}'>{{ gardu_induk }}</a>");
     {% endfor %}
     
     

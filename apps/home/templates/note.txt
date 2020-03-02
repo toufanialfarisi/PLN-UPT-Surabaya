@@ -1,0 +1,181 @@
+{% for ULTGs, GIs, BAYs, FUNGSIs, ID_FUNCTLOCs, SUP_FUNCTLOCs, NM_LOKASIs, DESKRIPSIs, ID_LOCATIONs, ID_PARENTs, TEGANGANs, KD_FUNGSIs, KD_WILAYAHs, TGL_OPRSs, TGL_TDK_OPRSs, FLAGs, WORKCENTERs, ID_PLANTs, ID_TRAGIs, NOMORGIs, KD_GROUPLOKASIs,ID_SECTIONs, BOUNDs, BA_CODEs, ASSET_LOKASIs, BAYGROUPs, MVAs, NOSIRKITs, COSTCENTERs, BC_FLCs in ULTG_LIST | zip(GI_LIST, BAY_LIST, FUNGSI_LIST, ID_FUNCTLOC_LIST, SUP_FUNCTLOC_LIST, NM_LOKASI_LIST, DESKRIPSI_LIST, ID_LOCATION_LIST, ID_PARENT_LIST, TEGANGAN_LIST, KD_FUNGSI_LIST, KD_WILAYAH_LIST, TGL_OPRS_LIST, TGL_TDK_OPRS_LIST, FLAG_LIST, WORKCENTER_LIST, ID_PLANT_LIST, ID_TRAGI_LIST, NOMORGI_LIST, KD_GROUPLOKASI_LIST,ID_SECTION_LIST, BOUND_LIST, BA_CODE_LIST, ASSET_LOKASI_LIST, BAYGROUP_LIST, MVA_LIST, NOSIRKIT_LIST, COSTCENTER_LIST, BC_FLC_LIST) %}
+            <tr>
+              <td>ULTG</td>
+              
+              <td>{{ ULTGs }}</td>
+            </tr>
+
+            <tr>
+              <td>GI</td>
+              
+              <td>{{ GIs }}</td>
+            </tr>
+
+            <tr>
+              <td>BAY</td>
+              
+              <td>{{ BAYs }}</td>
+            </tr>
+
+            <tr>
+              <td>FUNGSI</td>
+              
+              <td>{{ FUNGSIs }}</td>
+            </tr>
+
+            <tr>
+              <td>ID_FUNCTLOC</td>
+              
+              <td>{{ ID_FUNCTLOCs }}</td>
+            </tr>
+
+            <tr>
+              <td>SUP_FUNCTLOC</td>
+              
+              <td>{{ SUP_FUNCTLOCs }}</td>
+            </tr>
+
+            <tr>
+              <td>NM_LOKASI</td>
+              
+              <td>{{ NM_LOKASIs }}</td>
+            </tr>
+
+            <tr>
+              <td>DESKRIPSI</td>
+              
+              <td>{{ DESKRIPSIs }}</td>
+            </tr>
+
+            <tr>
+              <td>ID_LOCATION</td>
+              
+              <td>{{ ID_LOCATIONs }}</td>
+            </tr>
+
+            <tr>
+              <td>ID_PARENT</td>
+              
+              <td>{{ ID_PARENTs }}</td>
+            </tr>
+
+            <tr>
+              <td>TEGANGAN</td>
+              
+              <td>{{ TEGANGANs }}</td>
+            </tr>
+
+            <tr>
+              <td>KD_FUNGSI</td>
+              
+              <td>{{ KD_FUNGSIs }}</td>
+            </tr>
+
+            <tr>
+              <td>KD_WILAYAH</td>
+              
+              <td>{{ KD_WILAYAHs }}</td>
+            </tr>
+
+            <tr>
+              <td>TGL_OPRS</td>
+              
+              <td>{{ TGL_OPRSs }}</td>
+            </tr>
+
+            <tr>
+              <td>TGL_TDK_OPRS</td>
+              
+              <td>{{ TGL_TDK_OPRSs }}</td>
+            </tr>
+
+            <tr>
+              <td>FLAG</td>
+              
+              <td>{{ FLAGs }}</td>
+            </tr>
+
+            <tr>
+              <td>WORKCENTER</td>
+              
+              <td>{{ WORKCENTERs }}</td>
+            </tr>
+
+            <tr>
+              <td>ID_PLANT</td>
+              
+              <td>{{ ID_PLANTs }}</td>
+            </tr>
+
+            <tr>
+              <td>ID_TRAGI</td>
+              
+              <td>{{ ID_TRAGIs }}</td>
+            </tr>
+
+            <tr>
+              <td>NOMORGI</td>
+              
+              <td>{{ NOMORGIs }}</td>
+            </tr>
+
+            <tr>
+              <td>KD_GROUPLOKASI</td>
+              
+              <td>{{ KD_GROUPLOKASIs }}</td>
+            </tr>
+
+            <tr>
+              <td>ID_SECTION</td>
+              
+              <td>{{ ID_SECTIONs }}</td>
+            </tr>
+
+            <tr>
+              <td>BOUND</td>
+              
+              <td>{{ BOUNDs }}</td>
+            </tr>
+
+            <tr>
+              <td>BA_CODE</td>
+              
+              <td>{{ BA_CODEs }}</td>
+            </tr>
+
+            <tr>
+              <td>ASSET_LOKASI</td>
+              
+              <td>{{ ASSET_LOKASIs }}</td>
+            </tr>
+
+            <tr>
+              <td>BAYGROUP</td>
+              
+              <td>{{ BAYGROUPs }}</td>
+            </tr>
+
+            <tr>
+              <td>MVA</td>
+              
+              <td>{{ MVAs }}</td>
+            </tr>
+
+            <tr>
+              <td>NOSIRKIT</td>
+              
+              <td>{{ NOSIRKITs }}</td>
+            </tr>
+
+            <tr>
+              <td>COSTCENTER</td>
+              
+              <td>{{ COSTCENTERs }}</td>
+            </tr>
+
+            <tr>
+              <td>BC_FLC</td>
+              
+              <td>{{ BC_FLCs }}</td>
+            </tr>
+{% endfor %}

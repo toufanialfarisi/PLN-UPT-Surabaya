@@ -89,13 +89,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url_for('home.index') }}" style="margin-right: 10px;">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ url_for('home.index') }}" style="margin-right: 10px;">Gardu Induk </a>
+                    <!-- <span class="sr-only">(current)</span> -->
                 </li>
                 <li class="nav-item">
-                    <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="modal"
+                    <!-- <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="modal"
                         data-target="#exampleModal">
-                        Statistik
-                    </button>
+                        Transmisi
+                    </button> -->
+                    <a class="nav-link" href="{{ url_for('home.index') }}" style="margin-right: 10px;">Transmisi</a>
                     {% include "statistik.html" %}
                 </li>
                 <!-- <li class="nav-item dropdown">
