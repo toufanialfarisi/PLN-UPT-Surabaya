@@ -1,0 +1,14 @@
+<canvas id="line-chart"></canvas>
+<script>
+    var ctx = $("#line-chart");
+    var lineChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: ["GI SIMPANG", "GI BUDURAN"],
+            datasets: [{
+                label: "test",
+                data: [25, 30]
+            }]
+        }
+    });
+</script>

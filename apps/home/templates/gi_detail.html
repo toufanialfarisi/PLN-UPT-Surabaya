@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block content %}
+<main role='main' style="margin-top: 10px; margin-bottom: 10px;">
+    <div class="container">
+        <div class="row">
+            <div class="col" id="carding">
+                <legend class="border-bottom mb-2">{{namaGI}}</legend>
+                
+                <table class="table table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>ULTG</td>
+                        <td>:</td>
+                        <td>{{ ultg }}</td>
+                      </tr>
+                      <tr>
+                        <td>Status Operasi</td>
+                        <td>:</td>
+                        <td>{{ statusOperasi }}</td>
+                      </tr>
+                      <tr>
+                        <td>ID Functloc</td>
+                        <td>:</td>
+                        <td>{{ idFunctloc }}</td>
+                      </tr>
+                      <tr>
+                        <td>Tegangan</td>
+                        <td>:</td>
+                        <td>{{ tegangan }} KV</td>
+                      </tr>
+                      <tr>
+                        <td>Tanggal Operasi</td>
+                        <td>:</td>
+                        <td>{{ tglOperasi }}</td>
+                      </tr>
+                      <tr>
+                        <td>Alamat</td>
+                        <td>:</td>
+                        <td>{{ alamat }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                
+            </div>
+
+            <div class="col">
+                
+                {% include "map_detail.html" %}
+            </div>
+        </div>
+
+    </div>
+</main>
+{% endblock %}
