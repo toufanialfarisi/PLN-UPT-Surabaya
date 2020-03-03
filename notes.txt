@@ -1,0 +1,5 @@
+# menambahkan url repo heroku ke projek
+git remote add heroku https://git.heroku.com/pln-upt-surabaya.git
+
+# menjalankan script migrate.sh
+heroku run sh migrate.sh
