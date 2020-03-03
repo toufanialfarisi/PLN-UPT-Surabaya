@@ -1,0 +1,8 @@
+language: python
+# python version to be installed
+python:
+  - "3.6"
+# command to run tests
+script:
+  - "export APP_SETTINGS=config.Development"
+  - "python test_app.py"

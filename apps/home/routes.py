@@ -86,7 +86,7 @@ def gi_detail(id):
     )
 
 
-@home.route("/<int:id_gi>/pmt/<string:ID_FUNCTLOC>")
+@home.route("/<int:id_gi>/peralatan/<string:ID_FUNCTLOC>")
 def pmtList(id_gi, ID_FUNCTLOC):
     PMT_LIST = []
     query_pmt = PMTModel.query.filter_by(
