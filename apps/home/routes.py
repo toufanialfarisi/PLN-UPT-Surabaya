@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from apps.home.models import GIModel, BayModel
+from apps.home.models import GIModel, BayModel, PMTModel
 import json
 
 home = Blueprint("home", __name__, template_folder="templates/",
@@ -49,8 +49,8 @@ def gi_detail(id):
     tegangan = queryNamaGI.TEGANGAN
     tglOperasi = queryNamaGI.TGL_OPRS
     alamat = queryNamaGI.ALAMAT
+    id_gi = queryNamaGI.id
     back = True
-
     '''
     CRITICAL BAY
     =========================================
@@ -58,69 +58,14 @@ def gi_detail(id):
     query_nmLokasi = queryNamaGI.NM_LOKASI
     query_bay = BayModel.query.filter_by(GI=str(query_nmLokasi)).all()
 
-    ULTG_LIST = []
-    GI_LIST = []
+    # print("")
+    # print("PMT LIST : ", PMT_LIST, " jumlah : ", len(PMT_LIST))
     BAY_LIST = []
-    FUNGSI_LIST = []
-    ID_FUNCTLOC_LIST = []
-    SUP_FUNCTLOC_LIST = []
-    NM_LOKASI_LIST = []
-    DESKRIPSI_LIST = []
-    ID_LOCATION_LIST = []
-    ID_PARENT_LIST = []
-    TEGANGAN_LIST = []
-    KD_FUNGSI_LIST = []
-    KD_WILAYAH_LIST = []
-    TGL_OPRS_LIST = []
-    TGL_TDK_OPRS_LIST = []
-    FLAG_LIST = []
-    WORKCENTER_LIST = []
-    ID_PLANT_LIST = []
-    ID_TRAGI_LIST = []
-    NOMORGI_LIST = []
-    KD_GROUPLOKASI_LIST = []
-    ID_SECTION_LIST = []
-    BOUND_LIST = []
-    BA_CODE_LIST = []
-    ASSET_LOKASI_LIST = []
-    BAYGROUP_LIST = []
-    MVA_LIST = []
-    NOSIRKIT_LIST = []
-    COSTCENTER_LIST = []
-    BC_FLC_LIST = []
+    ID_LIST = []
 
     for data in query_bay:
-
-        ULTG_LIST.append(data.ULTG)
-        GI_LIST.append(data.GI)
+        ID_LIST.append(data.ID_FUNCTLOC)
         BAY_LIST.append(data.BAY)
-        FUNGSI_LIST.append(data.FUNGSI)
-        ID_FUNCTLOC_LIST.append(data.ID_FUNCTLOC)
-        SUP_FUNCTLOC_LIST.append(data.SUP_FUNCTLOC)
-        NM_LOKASI_LIST.append(data.NM_LOKASI)
-        DESKRIPSI_LIST.append(data.DESKRIPSI)
-        ID_LOCATION_LIST.append(data.ID_LOCATION)
-        ID_PARENT_LIST.append(data.ID_PARENT)
-        TEGANGAN_LIST.append(data.TEGANGAN)
-        KD_FUNGSI_LIST.append(data.KD_FUNGSI)
-        KD_WILAYAH_LIST.append(data.KD_WILAYAH)
-        TGL_OPRS_LIST.append(data.TGL_OPRS)
-        TGL_TDK_OPRS_LIST.append(data.TGL_TDK_OPRS)
-        FLAG_LIST.append(data.FLAG)
-        WORKCENTER_LIST.append(data.WORKCENTER)
-        ID_PLANT_LIST.append(data.ID_PLANT)
-        ID_TRAGI_LIST.append(data.ID_TRAGI)
-        NOMORGI_LIST.append(data.NOMORGI)
-        KD_GROUPLOKASI_LIST.append(data.KD_GROUPLOKASI)
-        ID_SECTION_LIST.append(data.ID_SECTION)
-        BOUND_LIST.append(data.BOUND)
-        BA_CODE_LIST.append(data.BA_CODE)
-        ASSET_LOKASI_LIST.append(data.ASSET_LOKASI)
-        BAYGROUP_LIST.append(data.BAYGROUP)
-        MVA_LIST.append(data.MVA)
-        NOSIRKIT_LIST.append(data.NOSIRKIT)
-        COSTCENTER_LIST.append(data.COSTCENTER)
-        BC_FLC_LIST.append(data.BC_FLC)
 
     return render_template(
         "gi_detail.html",
@@ -134,34 +79,30 @@ def gi_detail(id):
         tegangan=tegangan,
         tglOperasi=tglOperasi,
         alamat=alamat,
-
-        GI_LIST=GI_LIST,
         BAY_LIST=BAY_LIST,
-        FUNGSI_LIST=FUNGSI_LIST,
-        ID_FUNCTLOC_LIST=ID_FUNCTLOC_LIST,
-        SUP_FUNCTLOC_LIST=SUP_FUNCTLOC_LIST,
-        NM_LOKASI_LIST=NM_LOKASI_LIST,
-        DESKRIPSI_LIST=DESKRIPSI_LIST,
-        ID_LOCATION_LIST=ID_LOCATION_LIST,
-        ID_PARENT_LIST=ID_PARENT_LIST,
-        TEGANGAN_LIST=TEGANGAN_LIST,
-        KD_FUNGSI_LIST=KD_FUNGSI_LIST,
-        KD_WILAYAH_LIST=KD_WILAYAH_LIST,
-        TGL_OPRS_LIST=TGL_OPRS_LIST,
-        TGL_TDK_OPRS_LIST=TGL_TDK_OPRS_LIST,
-        FLAG_LIST=FLAG_LIST,
-        WORKCENTER_LIST=WORKCENTER_LIST,
-        ID_PLANT_LIST=ID_PLANT_LIST,
-        ID_TRAGI_LIST=ID_TRAGI_LIST,
-        NOMORGI_LIST=NOMORGI_LIST,
-        KD_GROUPLOKASI_LIST=KD_GROUPLOKASI_LIST,
-        ID_SECTION_LIST=ID_SECTION_LIST,
-        BOUND_LIST=BOUND_LIST,
-        BA_CODE_LIST=BA_CODE_LIST,
-        ASSET_LOKASI_LIST=ASSET_LOKASI_LIST,
-        BAYGROUP_LIST=BAYGROUP_LIST,
-        MVA_LIST=MVA_LIST,
-        NOSIRKIT_LIST=NOSIRKIT_LIST,
-        COSTCENTER_LIST=COSTCENTER_LIST,
-        BC_FLC_LIST=BC_FLC_LIST
+        ID_LIST=ID_LIST,
+        ID_GI=id_gi
+        # PMT_LIST=PMT_LIST
+    )
+
+
+@home.route("/<int:id_gi>/pmt/<string:ID_FUNCTLOC>")
+def pmtList(id_gi, ID_FUNCTLOC):
+    PMT_LIST = []
+    query_pmt = PMTModel.query.filter_by(
+        ID_FUNCTLOC=ID_FUNCTLOC).all()
+    bayGI = BayModel.query.filter_by(ID_FUNCTLOC=ID_FUNCTLOC).first()
+
+    queryNamaGI = GIModel.query.get(id_gi)
+    lat = queryNamaGI.LATITUDE
+    lon = queryNamaGI.LONGITUDE
+    namaGI = queryNamaGI.NM_LOKASI
+    return render_template(
+        "peralatan.html",
+        ID_GI=id_gi,
+        back=True,
+        PMT=query_pmt,
+        bayGI=bayGI,
+        lat=lat, lon=lon,
+        namaGI=namaGI
     )

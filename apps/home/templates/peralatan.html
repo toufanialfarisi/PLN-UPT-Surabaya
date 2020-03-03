@@ -1,0 +1,122 @@
+{% extends "layout_detail.html" %}
+{% block content %}
+<main role='main' style="margin-top: 15px; margin-bottom: 10px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8" id="carding" style="height: fit-content;">
+
+                <!-- TAB -->
+
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-pmt-tab" data-toggle="pill" href="#pills-pmt" role="tab"
+                            aria-controls="pills-pmt" aria-selected="true">PMT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-pms-tab" data-toggle="pill" href="#pills-pms" role="tab"
+                            aria-controls="pills-pms" aria-selected="false">PMS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-ct-tab" data-toggle="pill" href="#pills-ct" role="tab"
+                            aria-controls="pills-ct" aria-selected="false">CT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-pt-tab" data-toggle="pill" href="#pills-pt" role="tab"
+                            aria-controls="pills-pt" aria-selected="false">PT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-la-tab" data-toggle="pill" href="#pills-la" role="tab"
+                            aria-controls="pills-la" aria-selected="false">LA</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-pmt" role="tabpanel"
+                        aria-labelledby="pills-pmt-tab">
+                        <!-- CONTENT -->
+                        <div class="table-responsive" style="font-size: 14px;">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>SERIAL_ID</th>
+                                        <th>THN_BUAT</th>
+                                        <th>TGL_OPRS</th>
+                                        <th>TEG_OPRS</th>
+                                        <th>PHASA</th>
+                                        <th>RATING_ARUS</th>
+                                        <th>BREAKING_CURRENT</th>
+                                        <th>MEDIA_PMDM</th>
+                                        <th>RATING_TEG</th>
+                                        <th>THN_KTK</th>
+                                        <th>THN_ISO</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for data in PMT %}
+                                    <tr>
+                                        <td>{{data.SERIAL_ID}}</td>
+                                        <td>{{data.THN_BUAT}}</td>
+                                        <td>{{data.TGL_OPRS}}</td>
+                                        <td>{{data.TEG_OPRS}}</td>
+                                        <td>{{data.PHASA}}</td>
+                                        <td>{{data.RATING_ARUS}}</td>
+                                        <td>{{data.BREAKING_CURRENT}}</td>
+                                        <td>{{data.MEDIA_PMDM}}</td>
+                                        <td>{{data.RATING_TEG}}</td>
+                                        <td>{{data.THN_KTK}}</td>
+                                        <td>{{data.THN_ISO}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- CONTENT -->
+                    </div>
+                    <div class="tab-pane fade" id="pills-pms" role="tabpanel" aria-labelledby="pills-pms-tab">
+                        <!-- CONTENT -->
+                        <!-- CONTENT -->
+                    </div>
+                    <div class="tab-pane fade" id="pills-ct" role="tabpanel" aria-labelledby="pills-ct-tab">
+                    </div>
+                    <div class="tab-pane fade" id="pills-pt" role="tabpanel" aria-labelledby="pills-ct-tab">
+                    </div>
+                    <div class="tab-pane fade" id="pills-la" role="tabpanel" aria-labelledby="pills-ct-tab">
+                    </div>
+                </div>
+
+                <!-- TAB -->
+
+
+            </div>
+
+
+
+            <div class="col-md-4" style="width: 300px;">
+                <div class="content-section">
+                    <legend class="border-bottom mb-2">{{namaGI}}</legend>
+
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td>ULTG</td>
+                                <td>:</td>
+                                <td>{{ bayGI.ULTG }}</td>
+                            </tr>
+                            <tr>
+                                <td>Bay</td>
+                                <td>:</td>
+                                <td>{{ bayGI.BAY }} KV</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="content-section">
+                    {% include "map_detail.html" %}
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</main>
+{% endblock %}
