@@ -72,8 +72,44 @@
                         <!-- CONTENT -->
                     </div>
                     <div class="tab-pane fade" id="pills-pms" role="tabpanel" aria-labelledby="pills-pms-tab">
-                        <!-- CONTENT -->
-                        <!-- CONTENT -->
+                                               <!-- CONTENT -->
+                                               <div class="table-responsive" style="font-size: 14px;">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>SERIAL_ID</th>
+                                                            <th>THN_BUAT</th>
+                                                            <th>TGL_OPRS</th>
+                                                            <th>TEG_OPRS</th>
+                                                            <th>PHASA</th>
+                                                            <th>ARUS_NOM</th>
+                                                            <th>MKNK_PGRK</th>
+                                                            <th>THN_KTK</th>
+                                                            <th>DUR_HUB_SING</th>
+                                                            <th>THN_KTK</th>
+                                                            <th>BERAT</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {% for data in PMS %}
+                                                        <tr>
+                                                            <td>{{data.SERIAL_ID}}</td>
+                                                            <td>{{data.THN_BUAT}}</td>
+                                                            <td>{{data.TGL_OPRS}}</td>
+                                                            <td>{{data.TEG_OPRS}}</td>
+                                                            <td>{{data.PHASA}}</td>
+                                                            <td>{{data.ARUS_NOM}}</td>
+                                                            <td>{{data.MKNK_PGRK}}</td>
+                                                            <td>{{data.THN_KTK}}</td>
+                                                            <td>{{data.DUR_HUB_SING}}</td>
+                                                            <td>{{data.THN_KTK}}</td>
+                                                            <td>{{data.BERAT}}</td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- CONTENT -->
                     </div>
                     <div class="tab-pane fade" id="pills-ct" role="tabpanel" aria-labelledby="pills-ct-tab">
                     </div>

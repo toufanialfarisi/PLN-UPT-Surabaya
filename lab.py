@@ -1,6 +1,7 @@
 import pandas as pd
-from apps.home.models import GIModel, BayModel, PMTModel
+from apps.home.models import GIModel, BayModel, PMTModel, PMSModel
 from apps import db
+import timeit
 
 
 def bay():
@@ -13,6 +14,7 @@ def bay():
     data2 = data.values
     for idx in range(data.shape[0]):
         out_data = data2[idx]
+        print(out_data)
         ULTG = out_data[0]
         GI = out_data[1]
         BAY = out_data[2]
@@ -94,6 +96,7 @@ def GI():
     ''' MEMASUKAN SEMUA DATA DARI DATASET KE DB '''
     for idx in range(data.shape[0]):
         test_data = data2[idx]
+        print(test_data)
         ULTG = test_data[0]
         STATUS_OPERASI = test_data[1]
         ID_FUNCTLOC = test_data[2]
@@ -118,7 +121,7 @@ def GI():
                         )
         db.session.add(model)
         db.session.commit()
-    print("All Data was inserted into db successfully")
+    print("All GI Data was inserted into db successfully")
 
 
 def removeAll():
@@ -128,14 +131,136 @@ def removeAll():
         db.session.commit()
     print("data successfully deleted")
 
+def PMS():
+    data_src = "data/peralatan/pms.xlsx"
+    data = pd.read_excel(data_src)
+    data2 = data.values
+    out = data.loc[data['NMTRAGI'] == 'UPT SURABAYA']
+    for idx in range(out.shape[0]):
+        pms_data = out.values[idx]
+        print(pms_data)
+        NMTRAGI=pms_data[0]
+        NAMAGI=pms_data[1]
+        NAMABAY=pms_data[2]
+        STATUS_ALAT=pms_data[3]
+
+        ### bermasalah ###
+        # TECHIDENTNO=pms_data[4]
+        ### bermasalah ###
+
+        EQ_NUMBER=pms_data[5]
+        SERIAL_ID=pms_data[6]
+        ID_BAY=pms_data[7]
+        KODE_PST=pms_data[8]
+        KD_STATUS=pms_data[9]
+        TEG_OPRS=pms_data[10]
+        MERK=pms_data[11]
+        TIPE=pms_data[12]
+        PHASA=pms_data[13]
+        BUATAN=pms_data[14]
+        THN_BUAT=pms_data[15]
+        TGL_OPRS=pms_data[16]
+        PENEMPATAN=pms_data[17]
+        KETERANGAN=pms_data[18]
+        FLAG=pms_data[19]
+        ID_KOMPARTEMEN=pms_data[20]
+        KELENGKAPAN=pms_data[21]
+        ASSET=pms_data[22]
+        CONS_TYPE=pms_data[23]
+        JENIS=pms_data[24]
+        TEG_NOM=pms_data[25]
+        ARUS_NOM=pms_data[26]
+        MKNK_PGRK=pms_data[27]
+        SHORT_TIME_SCC=pms_data[28]
+        PEAK_SCC=pms_data[29]
+        BIL=pms_data[30]
+        SIL=pms_data[31]
+        PFW=pms_data[32]
+        BERAT=pms_data[33]
+        STANDART=pms_data[34]
+        PASANGAN=pms_data[35]
+        WKT_BUKA=pms_data[36]
+        WKT_TUTUP=pms_data[37]
+        THN_KTK=pms_data[38]
+        ARUS_HS_PEAK=pms_data[39]
+        CREEP_DIST_SUPPORT=pms_data[40]
+        DUR_HUB_SING=pms_data[41]
+        TEG_AC_MOTOR=pms_data[42]
+        TEG_DC_MOTOR=pms_data[43]
+        MATERIAL_INSULATOR=pms_data[44]
+        TYPE_ID=pms_data[45]
+        EQUIPMENT_NUMBER=pms_data[46]
+        ID_FUNCTLOC=pms_data[47]
+        CCODE=pms_data[48]
+
+        model = PMSModel(
+            NMTRAGI=NMTRAGI,
+            NAMAGI=NAMAGI,
+            NAMABAY=NAMABAY,
+            STATUS_ALAT=STATUS_ALAT,
+
+            ### bermasalah ###
+            # TECHIDENTNO=TECHIDENTNO,
+            ### bermasalah ###
+
+            EQ_NUMBER=EQ_NUMBER,
+            SERIAL_ID=SERIAL_ID,
+            ID_BAY=ID_BAY,
+            KODE_PST=KODE_PST,
+            KD_STATUS=KD_STATUS,
+            TEG_OPRS=TEG_OPRS,
+            MERK=MERK,
+            TIPE=TIPE,
+            PHASA=PHASA,
+            BUATAN=BUATAN,
+            THN_BUAT=THN_BUAT,
+            TGL_OPRS=TGL_OPRS,
+            PENEMPATAN=PENEMPATAN,
+            KETERANGAN=KETERANGAN,
+            FLAG=FLAG,
+            ID_KOMPARTEMEN=ID_KOMPARTEMEN,
+            KELENGKAPAN=KELENGKAPAN,
+            ASSET=ASSET,
+            CONS_TYPE=CONS_TYPE,
+            JENIS=JENIS,
+            TEG_NOM=TEG_NOM,
+            ARUS_NOM=ARUS_NOM,
+            MKNK_PGRK=MKNK_PGRK,
+            SHORT_TIME_SCC=SHORT_TIME_SCC,
+            PEAK_SCC=PEAK_SCC,
+            BIL=BIL,
+            SIL=SIL,
+            PFW=PFW,
+            BERAT=BERAT,
+            STANDART=STANDART,
+            PASANGAN=PASANGAN,
+            WKT_BUKA=WKT_BUKA,
+            WKT_TUTUP=WKT_TUTUP,
+            THN_KTK=THN_KTK,
+            ARUS_HS_PEAK=ARUS_HS_PEAK,
+            CREEP_DIST_SUPPORT=CREEP_DIST_SUPPORT,
+            DUR_HUB_SING=DUR_HUB_SING,
+            TEG_AC_MOTOR=TEG_AC_MOTOR,
+            TEG_DC_MOTOR=TEG_DC_MOTOR,
+            MATERIAL_INSULATOR=MATERIAL_INSULATOR,
+            TYPE_ID=TYPE_ID,
+            EQUIPMENT_NUMBER=EQUIPMENT_NUMBER,
+            ID_FUNCTLOC=ID_FUNCTLOC,
+            CCODE=CCODE
+        )
+        db.session.add(model)
+        db.session.commit()
+        print("All PMS data was imported successfully")
 
 def PMT():
     data_src = "data/peralatan/pmt.xlsx"
-    data = pd.read_excel(data_src, sheet_name="data")
-    data2 = data.values
+    data = pd.read_excel(data_src)
+    data = data.loc[data['NMTRAGI'] == 'UPT SURABAYA']
+    data = data.values
     # print(data2.shape)
     for idx in range(data.shape[0]):
-        pmt_data = data2[idx]
+        pmt_data = data[idx]
+        print(pmt_data)
         NMTRAGI = pmt_data[0]
         NAMAGI = pmt_data[1]
         NAMABAY = pmt_data[2]
@@ -249,8 +374,14 @@ def PMT():
         db.session.commit()
     print("All PMT data was inserted")
 
-
-if __name__ == "__main__":
+def queryProgress():
     bay()
     GI()
     PMT()
+    PMS()
+
+
+
+
+if __name__ == "__main__":
+    queryProgress()
