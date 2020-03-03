@@ -3,3 +3,6 @@ git remote add heroku https://git.heroku.com/pln-upt-surabaya.git
 
 # menjalankan script migrate.sh
 heroku run sh migrate.sh
+
+# masuk ke CMD heroku
+heroku run bash
