@@ -112,6 +112,45 @@
                                             <!-- CONTENT -->
                     </div>
                     <div class="tab-pane fade" id="pills-ct" role="tabpanel" aria-labelledby="pills-ct-tab">
+                        <!-- CONTENT -->
+                        <div class="table-responsive" style="font-size: 14px;">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>STATUS_ALAT</th>
+                                        <th>STATUS_ALAT</th>
+                                        <th>MERK</th>
+                                        <th>PHASA</th>
+                                        <th>I_RATED_PRI</th>
+                                        <th>I_RATED_SEC</th>
+                                        <th>TGL_OPRS</th>
+                                        <th>TEG_MAKS</th>
+                                        <th>I_THERM_CONT</th>
+                                        <th>BERAT_TOT</th>
+                                        <th>JML_CORE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for data in CT %}
+                                    <tr>
+                                        <th>{{data.STATUS_ALAT}}</th>
+                                        <th>{{data.STATUS_ALAT}}</th>
+                                        <th>{{data.MERK}}</th>
+                                        <th>{{data.PHASA}}</th>
+                                        <th>{{data.I_RATED_PRI}}</th>
+                                        <th>{{data.I_RATED_SEC}}</th>
+                                        <th>{{data.TGL_OPRS}}</th>
+                                        <th>{{data.TEG_MAKS}}</th>
+                                        <th>{{data.I_THERM_CONT}}</th>
+                                        <th>{{data.BERAT_TOT}}</th>
+                                        <th>{{data.JML_CORE}}</th>
+                                        
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- CONTENT -->
                     </div>
                     <div class="tab-pane fade" id="pills-pt" role="tabpanel" aria-labelledby="pills-ct-tab">
                     </div>

@@ -1,5 +1,11 @@
 import pandas as pd
-from apps.home.models import GIModel, BayModel, PMTModel, PMSModel
+from apps.home.models import (
+    GIModel, 
+    BayModel, 
+    PMTModel, 
+    PMSModel,
+    CTModel
+)
 from apps import db
 import timeit
 
@@ -80,7 +86,7 @@ def bay():
         )
         db.session.add(model)
         db.session.commit()
-    print("all data of BayModel was inserted successfully")
+    print("all data of BayModel were inserted successfully")
 
 
 def URL(NM_LOKASI):
@@ -121,7 +127,7 @@ def GI():
                         )
         db.session.add(model)
         db.session.commit()
-    print("All GI Data was inserted into db successfully")
+    print("All GI Data were inserted into db successfully")
 
 
 def removeAll():
@@ -250,7 +256,7 @@ def PMS():
         )
         db.session.add(model)
         db.session.commit()
-        print("All PMS data was imported successfully")
+        print("All PMS data were imported successfully")
 
 def PMT():
     data_src = "data/peralatan/pmt.xlsx"
@@ -372,16 +378,172 @@ def PMT():
         )
         db.session.add(model)
         db.session.commit()
-    print("All PMT data was inserted")
+    print("All PMT data were inserted")
+
+
+def CT():
+    data_src = "data/peralatan/ct.xlsx"
+    data = pd.read_excel(data_src)
+    data = data.loc[data['NMTRAGI'] == 'UPT SURABAYA']
+    data = data.values
+    for idx in range(data.shape[0]):
+        data_ct = data[idx]
+        print(data_ct)
+        NMTRAGI=data_ct[0]
+        NAMAGI=data_ct[1]   
+        NAMABAY=data_ct[2]
+        STATUS_ALAT=data_ct[3]
+        # TECHIDENTNO=data_ct[4]
+        EQ_NUMBER=data_ct[5]
+        EQUIPMENT_NUMBER=data_ct[6]
+        SERIAL_ID=data_ct[7]
+        ID_BAY=data_ct[8]
+        ID_FUNCTLOC=data_ct[9]
+        KODE_PST=data_ct[10]
+        KD_STATUS=data_ct[11]
+        TEG_OPRS=data_ct[12]
+        MERK=data_ct[13]
+        TIPE=data_ct[14]
+        PHASA=data_ct[15]
+        BUATAN=data_ct[16]
+        THN_BUAT=data_ct[17]
+        TGL_OPRS=data_ct[18]
+        PENEMPATAN=data_ct[19]
+        KETERANGAN=data_ct[20]
+        ASSET=data_ct[21]
+        CONS_TYPE=data_ct[22]
+        FLAG=data_ct[23]
+        ID_KOMPARTEMEN=data_ct[24]
+        JENIS=data_ct[25]
+        TEG_MAKS=data_ct[26]
+        ISOLASI=data_ct[27]
+        ISC_1S=data_ct[28]
+        ISC_3S=data_ct[29]
+        BIL=data_ct[30]
+        SIL=data_ct[31]
+        PFW=data_ct[32]
+        TAP_CT=data_ct[33]
+        I_RATED_PRI=data_ct[34]
+        I_RATED_SEC=data_ct[35]
+        RATING_ARUS=data_ct[36]
+        I_THERM_CONT=data_ct[37]
+        I_DYN=data_ct[38]
+        BURDEN=data_ct[39]
+        CLASS=data_ct[40]
+        FUNGSI=data_ct[41]
+        HOUSING=data_ct[42]
+        CREEP_DIST=data_ct[43]
+        HEAD_HOUSING=data_ct[44]
+        BASE_HOUSING=data_ct[45]
+        BERAT_TOT=data_ct[46]
+        STANDARD=data_ct[47]
+        JML_CORE=data_ct[48]
+        RATIO_CORE_1=data_ct[49]
+        CLASS_CORE_1=data_ct[50]
+        BURDEN_CORE_1=data_ct[51]
+        RATIO_CORE_2=data_ct[52]
+        CLASS_CORE_2=data_ct[53]
+        BURDEN_CORE_2=data_ct[54]
+        RATIO_CORE_3=data_ct[55]
+        CLASS_CORE_3=data_ct[56]
+        BURDEN_CORE_3=data_ct[57]
+        RATIO_CORE_4=data_ct[58]
+        CLASS_CORE_4=data_ct[59]
+        BURDEN_CORE_4=data_ct[60]
+        RATIO_CORE_5=data_ct[61]
+        CLASS_CORE_5=data_ct[62]
+        BURDEN_CORE_5=data_ct[63]
+        RATIO_CORE_6=data_ct[64]
+        CLASS_CORE_6=data_ct[65]
+        BURDEN_CORE_6=data_ct[66]
+        PASANGAN=data_ct[67]
+        TYPE_ID=data_ct[68]
+        CCODE=data_ct[69] 
+
+        model = CTModel(
+            NMTRAGI=NMTRAGI,
+            NAMAGI=NAMAGI,   
+            NAMABAY=NAMABAY,
+            STATUS_ALAT=STATUS_ALAT,
+            # TECHIDENTNO=TECHIDENTNO,
+            EQ_NUMBER=EQ_NUMBER,
+            EQUIPMENT_NUMBER=EQUIPMENT_NUMBER,
+            SERIAL_ID=SERIAL_ID,
+            ID_BAY=ID_BAY,
+            ID_FUNCTLOC=ID_FUNCTLOC,
+            KODE_PST=KODE_PST,
+            KD_STATUS=KD_STATUS,
+            TEG_OPRS=TEG_OPRS,
+            MERK=MERK,
+            TIPE=TIPE,
+            PHASA=PHASA,
+            BUATAN=BUATAN,
+            THN_BUAT=THN_BUAT,
+            TGL_OPRS=TGL_OPRS,
+            PENEMPATAN=PENEMPATAN,
+            KETERANGAN=KETERANGAN,
+            ASSET=ASSET,
+            CONS_TYPE=CONS_TYPE,
+            FLAG=FLAG,
+            ID_KOMPARTEMEN=ID_KOMPARTEMEN,
+            JENIS=JENIS,
+            TEG_MAKS=TEG_MAKS,
+            ISOLASI=ISOLASI,
+            ISC_1S=ISC_1S,
+            ISC_3S=ISC_3S,
+            BIL=BIL,
+            SIL=SIL,
+            PFW=PFW,
+            TAP_CT=TAP_CT,
+            I_RATED_PRI=I_RATED_PRI,
+            I_RATED_SEC=I_RATED_SEC,
+            RATING_ARUS=RATING_ARUS,
+            I_THERM_CONT=I_THERM_CONT,
+            I_DYN=I_DYN,
+            BURDEN=BURDEN,
+            CLASS=CLASS,
+            FUNGSI=FUNGSI,
+            HOUSING=HOUSING,
+            CREEP_DIST=CREEP_DIST,
+            HEAD_HOUSING=HEAD_HOUSING,
+            BASE_HOUSING=BASE_HOUSING,
+            BERAT_TOT=BERAT_TOT,
+            STANDARD=STANDARD,
+            JML_CORE=JML_CORE,
+            RATIO_CORE_1=RATIO_CORE_1,
+            CLASS_CORE_1=CLASS_CORE_1,
+            BURDEN_CORE_1=BURDEN_CORE_1,
+            RATIO_CORE_2=RATIO_CORE_2,
+            CLASS_CORE_2=CLASS_CORE_2,
+            BURDEN_CORE_2=BURDEN_CORE_2,
+            RATIO_CORE_3=RATIO_CORE_3,
+            CLASS_CORE_3=CLASS_CORE_3,
+            BURDEN_CORE_3=BURDEN_CORE_3,
+            RATIO_CORE_4=RATIO_CORE_4,
+            CLASS_CORE_4=CLASS_CORE_4,
+            BURDEN_CORE_4=BURDEN_CORE_4,
+            RATIO_CORE_5=RATIO_CORE_5,
+            CLASS_CORE_5=CLASS_CORE_5,
+            BURDEN_CORE_5=BURDEN_CORE_5,
+            RATIO_CORE_6=RATIO_CORE_6,
+            CLASS_CORE_6=CLASS_CORE_6,
+            BURDEN_CORE_6=BURDEN_CORE_6,
+            PASANGAN=PASANGAN,
+            TYPE_ID=TYPE_ID,
+            CCODE=CCODE,
+        )
+        db.session.add(model)
+        db.session.commit()
+    print("All CT Data were successfully imported")
 
 def queryProgress():
     bay()
     GI()
     PMT()
     PMS()
+    CT()
 
-
-
-
+import os 
 if __name__ == "__main__":
     queryProgress()
+    
