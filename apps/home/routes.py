@@ -1,5 +1,12 @@
 from flask import Blueprint, render_template
-from apps.home.models import GIModel, BayModel, PMTModel, PMSModel, CTModel
+from apps.home.models import (
+    GIModel, 
+    BayModel, 
+    PMTModel, 
+    PMSModel, 
+    CTModel, 
+    PTModel
+)
 import json
 
 home = Blueprint("home", __name__, template_folder="templates/",
@@ -94,6 +101,7 @@ def pmtList(id_gi, ID_FUNCTLOC):
     
     query_pms = PMSModel.query.filter_by(ID_FUNCTLOC=ID_FUNCTLOC).all()
     query_ct = CTModel.query.filter_by(ID_FUNCTLOC=ID_FUNCTLOC).all()
+    query_pt = PTModel.query.filter_by(ID_FUNCTLOC=ID_FUNCTLOC).all()
     bayGI = BayModel.query.filter_by(ID_FUNCTLOC=ID_FUNCTLOC).first()
 
     queryNamaGI = GIModel.query.get(id_gi)
@@ -107,6 +115,7 @@ def pmtList(id_gi, ID_FUNCTLOC):
         PMT=query_pmt,
         PMS=query_pms,
         CT=query_ct,
+        PT=query_pt,
         bayGI=bayGI,
         lat=lat, lon=lon,
         namaGI=namaGI

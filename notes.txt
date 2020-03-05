@@ -7,3 +7,64 @@ heroku run sh migrate.sh
 # masuk ke CMD heroku
 heroku run bash
 
+
+
+
+NMTRAGI              object
+NAMAGI               object
+NAMABAY              object
+STATUS_ALAT          object
+SERIAL_ID            object
+TYPE_ID              object
+ID_BAY               object
+KODE_PST              int64
+KD_STATUS             int64
+TEG_OPRS            float64
+PHASA                object
+BUATAN               object
+THN_BUAT              int64
+TGL_OPRS             object
+KETERANGAN           object
+ID_KOMPARTEMEN       object
+FLAG                float64
+MERK                 object
+TIPE                 object
+JENIS                object
+TEG_MAKS             object
+TEG_PRIM             object
+TEG_SEC              object
+JML_CORE            float64
+CLASS_CORE_1         object
+CLASS_CORE_2         object
+CLASS_CORE_3         object
+BURDEN_CORE_1       float64
+BURDEN_CORE_2       float64
+BURDEN_CORE_3       float64
+C1                  float64
+C2                  float64
+C3                  float64
+BIL                 float64
+SIL                 float64
+PFW                 float64
+RVF_CONT            float64
+RVF_30S             float64
+ISOLASI              object
+CREEP_DIST          float64
+HOUSING              object
+TOLERANSI            object
+TAN_DELTA           float64
+BERAT_TOTAL         float64
+STANDARD             object
+PASANGAN             object
+RATED_FREQ          float64
+PENEMPATAN           object
+WAVE_TRAP            object
+CONS_TYPE           float64
+TECHIDENTNO          uint64
+ASSET                object
+EQ_NUMBER            object
+EQUIPMENT_NUMBER    float64
+ID_FUNCTLOC          object
+THERM_BURDEN        float64
+CCODE                object
+dtype: object

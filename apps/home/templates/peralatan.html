@@ -118,7 +118,6 @@
                                 <thead>
                                     <tr>
                                         <th>STATUS_ALAT</th>
-                                        <th>STATUS_ALAT</th>
                                         <th>MERK</th>
                                         <th>PHASA</th>
                                         <th>I_RATED_PRI</th>
@@ -133,7 +132,6 @@
                                 <tbody>
                                     {% for data in CT %}
                                     <tr>
-                                        <th>{{data.STATUS_ALAT}}</th>
                                         <th>{{data.STATUS_ALAT}}</th>
                                         <th>{{data.MERK}}</th>
                                         <th>{{data.PHASA}}</th>
@@ -152,7 +150,48 @@
                         </div>
                         <!-- CONTENT -->
                     </div>
-                    <div class="tab-pane fade" id="pills-pt" role="tabpanel" aria-labelledby="pills-ct-tab">
+                    <div class="tab-pane fade" id="pills-pt" role="tabpanel" aria-labelledby="pills-pt-tab">
+
+                                                <!-- CONTENT -->
+                                                <div class="table-responsive" style="font-size: 14px;">
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>STATUS_ALAT</th>
+                                                                <th>SERIAL_ID</th>
+                                                                <th>MERK</th>
+                                                                <th>TEG_OPRS</th>
+                                                                <th>PHASA</th>
+                                                                <th>TGL_OPRS</th>
+                                                                <th>TEG_MAKS</th>
+                                                                <th>TEG_PRIM</th>
+                                                                <th>TEG_SEC</th>
+                                                                <th>JML_CORE</th>
+                                                                <th>ISOLASI</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {% for data in PT %}
+                                                            <tr>
+                                                                <th>{{ data.STATUS_ALAT }}</th>
+                                                                <th>{{ data.SERIAL_ID }}</th>
+                                                                <th>{{ data.MERK }}</th>
+                                                                <th>{{ data.TEG_OPRS }}</th>
+                                                                <th>{{ data.PHASA }}</th>
+                                                                <th>{{ data.TGL_OPRS }}</th>
+                                                                <th>{{ data.TEG_MAKS }}</th>
+                                                                <th>{{ data.TEG_PRIM }}</th>
+                                                                <th>{{ data.TEG_SEC }}</th>
+                                                                <th>{{ data.JML_CORE }}</th>
+                                                                <th>{{ data.ISOLASI }}</th>
+                                                                
+                                                            </tr>
+                                                            {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- CONTENT -->
+
                     </div>
                     <div class="tab-pane fade" id="pills-la" role="tabpanel" aria-labelledby="pills-ct-tab">
                     </div>

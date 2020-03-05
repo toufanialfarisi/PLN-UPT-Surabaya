@@ -4,7 +4,8 @@ from apps.home.models import (
     BayModel, 
     PMTModel, 
     PMSModel,
-    CTModel
+    CTModel,
+    PTModel
 )
 from apps import db
 import timeit
@@ -536,14 +537,163 @@ def CT():
         db.session.commit()
     print("All CT Data were successfully imported")
 
+
+def PT():
+    data_src = "data/peralatan/pt.xlsx"
+    data = pd.read_excel(data_src)
+    data = data.loc[data['NMTRAGI'] == 'UPT SURABAYA']
+    data = data.values 
+    for idx in range(data.shape[0]):
+        data_pt = data[idx]
+        print(data_pt)
+        NMTRAGI=data_pt[0]
+        NAMAGI=data_pt[1]
+        NAMABAY=data_pt[2]
+        STATUS_ALAT=data_pt[3]
+        SERIAL_ID=data_pt[4]
+        TYPE_ID=data_pt[5]
+        ID_BAY=data_pt[6]
+        KODE_PST=data_pt[7]
+        KD_STATUS=data_pt[8]
+        TEG_OPRS=data_pt[9]
+        PHASA=data_pt[10]
+        BUATAN=data_pt[11]
+        THN_BUAT=data_pt[12]
+        TGL_OPRS=data_pt[13]
+        KETERANGAN=data_pt[14]
+        ID_KOMPARTEMEN=data_pt[15]
+        FLAG=data_pt[16]
+        MERK=data_pt[17]
+        TIPE=data_pt[18]
+        JENIS=data_pt[19]
+        TEG_MAKS=data_pt[20]
+        TEG_PRIM=data_pt[21]
+        TEG_SEC=data_pt[22]
+        JML_CORE=data_pt[23]
+        CLASS_CORE_1=data_pt[24]
+        CLASS_CORE_2=data_pt[25]
+        CLASS_CORE_3=data_pt[26]
+        BURDEN_CORE_1=data_pt[27]
+        BURDEN_CORE_2=data_pt[28]
+        BURDEN_CORE_3=data_pt[29]
+        C1=data_pt[30]
+        C2=data_pt[31]
+        C3=data_pt[32]
+        BIL=data_pt[33]
+        SIL=data_pt[34]
+        PFW=data_pt[35]
+        RVF_CONT=data_pt[36]
+        RVF_30S=data_pt[37]
+        ISOLASI=data_pt[38]
+        CREEP_DIST=data_pt[39]
+        HOUSING=data_pt[40]
+        TOLERANSI=data_pt[41]
+        TAN_DELTA=data_pt[42]
+        BERAT_TOTAL=data_pt[43]
+        STANDARD=data_pt[44]
+        PASANGAN=data_pt[45]
+        RATED_FREQ=data_pt[46]
+        PENEMPATAN=data_pt[47]
+        WAVE_TRAP=data_pt[48]
+        CONS_TYPE=data_pt[49]
+        # TECHIDENTNO=data_pt[50]
+        ASSET=data_pt[51]
+        EQ_NUMBER=data_pt[52]
+        EQUIPMENT_NUMBER=data_pt[53]
+        ID_FUNCTLOC=data_pt[54]
+        THERM_BURDEN=data_pt[55]
+        CCODE=data_pt[56]
+        model = PTModel(
+            NMTRAGI=NMTRAGI,
+            NAMAGI=NAMAGI,
+            NAMABAY=NAMABAY,
+            STATUS_ALAT=STATUS_ALAT,
+            SERIAL_ID=SERIAL_ID,
+            TYPE_ID=TYPE_ID,
+            ID_BAY=ID_BAY,
+            KODE_PST=KODE_PST,
+            KD_STATUS=KD_STATUS,
+            TEG_OPRS=TEG_OPRS,
+            PHASA=PHASA,
+            BUATAN=BUATAN,
+            THN_BUAT=THN_BUAT,
+            TGL_OPRS=TGL_OPRS,
+            KETERANGAN=KETERANGAN,
+            ID_KOMPARTEMEN=ID_KOMPARTEMEN,
+            FLAG=FLAG,
+            MERK=MERK,
+            TIPE=TIPE,
+            JENIS=JENIS,
+            TEG_MAKS=TEG_MAKS,
+            TEG_PRIM=TEG_PRIM,
+            TEG_SEC=TEG_SEC,
+            JML_CORE=JML_CORE,
+            CLASS_CORE_1=CLASS_CORE_1,
+            CLASS_CORE_2=CLASS_CORE_2,
+            CLASS_CORE_3=CLASS_CORE_3,
+            BURDEN_CORE_1=BURDEN_CORE_1,
+            BURDEN_CORE_2=BURDEN_CORE_2,
+            BURDEN_CORE_3=BURDEN_CORE_3,
+            C1=C1,
+            C2=C2,
+            C3=C3,
+            BIL=BIL,
+            SIL=SIL,
+            PFW=PFW,
+            RVF_CONT=RVF_CONT,
+            RVF_30S=RVF_30S,
+            ISOLASI=ISOLASI,
+            CREEP_DIST=CREEP_DIST,
+            HOUSING=HOUSING,
+            TOLERANSI=TOLERANSI,
+            TAN_DELTA=TAN_DELTA,
+            BERAT_TOTAL=BERAT_TOTAL,
+            STANDARD=STANDARD,
+            PASANGAN=PASANGAN,
+            RATED_FREQ=RATED_FREQ,
+            PENEMPATAN=PENEMPATAN,
+            WAVE_TRAP=WAVE_TRAP,
+            CONS_TYPE=CONS_TYPE,
+            # TECHIDENTNO=TECHIDENTNO,
+            ASSET=ASSET,
+            EQ_NUMBER=EQ_NUMBER,
+            EQUIPMENT_NUMBER=EQUIPMENT_NUMBER,
+            ID_FUNCTLOC=ID_FUNCTLOC,
+            THERM_BURDEN=THERM_BURDEN,
+            CCODE=CCODE
+        )
+        db.session.add(model)
+        db.session.commit()
+    print("All PT Data were imported successfully")
+
+
+def LA():
+    pass 
+
+def showMetaLA():
+    pass 
+
+
+    
+
+
+
+def showMetaPT():
+    data_src = "data/peralatan/pt.xlsx"
+    data = pd.read_excel(data_src)
+    data = data.loc[data['NMTRAGI'] == 'UPT SURABAYA']
+    print(data.dtypes)
+
 def queryProgress():
     bay()
     GI()
     PMT()
     PMS()
     CT()
+    PT()
 
 import os 
 if __name__ == "__main__":
     queryProgress()
+    
     
