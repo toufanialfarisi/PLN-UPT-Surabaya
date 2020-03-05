@@ -5,13 +5,15 @@ from apps.home.models import (
     PMTModel, 
     PMSModel,
     CTModel,
-    PTModel
+    PTModel,
+    LAModel
 )
 from apps import db
-import timeit
+import time
 
 
-def bay():
+
+def BAY():
     data_src = "data/gi_bay.xlsx"
     data = pd.read_excel(data_src)
     columns = data.columns
@@ -19,9 +21,13 @@ def bay():
     # print(columns)
     # print(data_type)
     data2 = data.values
+    print(f"DATA BAY : {data2.shape[0]} BARIS , {data2.shape[1]} KOLOM")
+    time.sleep(3)
+    print("Tunggu Sebentar....!!!")
+    time.sleep(6)
     for idx in range(data.shape[0]):
         out_data = data2[idx]
-        print(out_data)
+        print(f"{idx+1} : {out_data}")
         ULTG = out_data[0]
         GI = out_data[1]
         BAY = out_data[2]
@@ -87,7 +93,7 @@ def bay():
         )
         db.session.add(model)
         db.session.commit()
-    print("all data of BayModel were inserted successfully")
+    print("Semua data BAY berhasil dimasukan ke Database\n\n")
 
 
 def URL(NM_LOKASI):
@@ -101,9 +107,13 @@ def GI():
     data = pd.read_excel(data_src)
     data2 = data.values
     ''' MEMASUKAN SEMUA DATA DARI DATASET KE DB '''
+    print(f"DATA GI: {data2.shape[0]} GI, {data2.shape[1]} KOLOM")
+    time.sleep(3)
+    print("Tunggu Sebentar....!!!")
+    time.sleep(6)
     for idx in range(data.shape[0]):
         test_data = data2[idx]
-        print(test_data)
+        print(f"{idx+1} : {test_data}")
         ULTG = test_data[0]
         STATUS_OPERASI = test_data[1]
         ID_FUNCTLOC = test_data[2]
@@ -128,7 +138,7 @@ def GI():
                         )
         db.session.add(model)
         db.session.commit()
-    print("All GI Data were inserted into db successfully")
+    print("Semua data GI berhasil dimasukan ke Database\n\n")
 
 
 def removeAll():
@@ -143,9 +153,13 @@ def PMS():
     data = pd.read_excel(data_src)
     data2 = data.values
     out = data.loc[data['NMTRAGI'] == 'UPT SURABAYA']
+    print(f"DATA PMS : {data.shape[0]} BARIS , {data.shape[1]} KOLOM")
+    time.sleep(3)
+    print("Tunggu Sebentar....!!!")
+    time.sleep(6)
     for idx in range(out.shape[0]):
         pms_data = out.values[idx]
-        print(pms_data)
+        print(f"{idx+1} : {pms_data}")
         NMTRAGI=pms_data[0]
         NAMAGI=pms_data[1]
         NAMABAY=pms_data[2]
@@ -257,17 +271,20 @@ def PMS():
         )
         db.session.add(model)
         db.session.commit()
-        print("All PMS data were imported successfully")
+    print("Semua data peralatan PMS berhasil dimasukan ke Database\n\n")
 
 def PMT():
     data_src = "data/peralatan/pmt.xlsx"
     data = pd.read_excel(data_src)
     data = data.loc[data['NMTRAGI'] == 'UPT SURABAYA']
     data = data.values
-    # print(data2.shape)
+    print(f"DATA PMT : {data.shape[0]} BARIS , {data.shape[1]} KOLOM")
+    time.sleep(3)
+    print("Tunggu Sebentar....!!!")
+    time.sleep(6)
     for idx in range(data.shape[0]):
         pmt_data = data[idx]
-        print(pmt_data)
+        print(f"{idx+1} : {pmt_data}")
         NMTRAGI = pmt_data[0]
         NAMAGI = pmt_data[1]
         NAMABAY = pmt_data[2]
@@ -379,7 +396,7 @@ def PMT():
         )
         db.session.add(model)
         db.session.commit()
-    print("All PMT data were inserted")
+    print("Semua data peralatan PMT berhasil dimasukan ke Database\n\n")
 
 
 def CT():
@@ -387,9 +404,13 @@ def CT():
     data = pd.read_excel(data_src)
     data = data.loc[data['NMTRAGI'] == 'UPT SURABAYA']
     data = data.values
+    print(f"DATA CT : {data.shape[0]} BARIS , {data.shape[1]} KOLOM")
+    time.sleep(3)
+    print("Tunggu Sebentar....!!!")
+    time.sleep(6)
     for idx in range(data.shape[0]):
         data_ct = data[idx]
-        print(data_ct)
+        print(f"{idx+1} : {data_ct}")
         NMTRAGI=data_ct[0]
         NAMAGI=data_ct[1]   
         NAMABAY=data_ct[2]
@@ -535,7 +556,7 @@ def CT():
         )
         db.session.add(model)
         db.session.commit()
-    print("All CT Data were successfully imported")
+    print("Semua data peralatan CT berhasil dimasukan ke Database\n\n")
 
 
 def PT():
@@ -543,9 +564,13 @@ def PT():
     data = pd.read_excel(data_src)
     data = data.loc[data['NMTRAGI'] == 'UPT SURABAYA']
     data = data.values 
+    print(f"DATA PT : {data.shape[0]} BARIS , {data.shape[1]} KOLOM")
+    time.sleep(3)
+    print("Tunggu Sebentar....!!!")
+    time.sleep(6)
     for idx in range(data.shape[0]):
         data_pt = data[idx]
-        print(data_pt)
+        print(f"{idx+1} : {data_pt}")
         NMTRAGI=data_pt[0]
         NAMAGI=data_pt[1]
         NAMABAY=data_pt[2]
@@ -664,19 +689,129 @@ def PT():
         )
         db.session.add(model)
         db.session.commit()
-    print("All PT Data were imported successfully")
+    print("Semua data peralatan PT berhasil dimasukan ke Database\n\n")
 
 
 def LA():
-    pass 
+    data_src = "data/peralatan/la.xlsx"
+    data = pd.read_excel(data_src)
+    data = data.loc[data['NMTRAGI'] == 'UPT SURABAYA']
+    data = data.values
+    print(f"DATA LA : {data.shape[0]} BARIS , {data.shape[1]} KOLOM")
+    time.sleep(3)
+    print("Tunggu Sebentar....!!!")
+    time.sleep(6)
+    for idx in range(data.shape[0]):
+        data_la = data[idx]
+        print(f"{idx+1} : {data_la}")
+        NMTRAGI=data_la[0]
+        NAMAGI=data_la[1]
+        NAMABAY=data_la[2]
+        STATUS_ALAT=data_la[3]
+        TECHIDENTNO=data_la[4]
+        EQ_NUMBER=data_la[5]
+        EQUIPMENT_NUMBER=data_la[6]
+        SERIAL_ID=data_la[7]
+        ID_BAY=data_la[8]
+        ID_FUNCTLOC=data_la[9]
+        KODE_PST=data_la[10]
+        KD_STATUS=data_la[11]
+        TEG_OPRS=data_la[12]
+        PHASA=data_la[13]
+        MERK=data_la[14]
+        TIPE=data_la[15]
+        BUATAN=data_la[16]
+        THN_BUAT=data_la[17]
+        TGL_OPRS=data_la[18]
+        PENEMPATAN=data_la[19]
+        KETERANGAN=data_la[20]
+        FLAG=data_la[21]
+        ID_KOMPARTEMEN=data_la[22]
+        ASSET=data_la[23]
+        CONS_TYPE=data_la[24]
+        ARUS_NOM_DISCH=data_la[25]
+        GAP_TYPE=data_la[26]
+        CLASS_DISCH=data_la[27]
+        MCOV=data_la[28]
+        JENIS=data_la[29]
+        MTRL_OKSIDA=data_la[30]
+        TEG_NOM=data_la[31]
+        TEG_RATING=data_la[32]
+        ARUS_DISCH_MAX=data_la[33]
+        BIL=data_la[34]
+        RESIDUAL_5KA=data_la[35]
+        RESIDUAL_10KA=data_la[36]
+        RESIDUAL_20KA=data_la[37]
+        TINGGI=data_la[38]
+        BERAT=data_la[39]
+        STANDART=data_la[40]
+        PASANGAN=data_la[41]
+        STACK=data_la[42]
+        TYPE_ID=data_la[43]
+        CCODE=data_la[44]
+
+        model = LAModel(
+            NMTRAGI=NMTRAGI,
+            NAMAGI=NAMAGI,
+            NAMABAY=NAMABAY,
+            STATUS_ALAT=STATUS_ALAT,
+            TECHIDENTNO=TECHIDENTNO,
+            EQ_NUMBER=EQ_NUMBER,
+            EQUIPMENT_NUMBER=EQUIPMENT_NUMBER,
+            SERIAL_ID=SERIAL_ID,
+            ID_BAY=ID_BAY,
+            ID_FUNCTLOC=ID_FUNCTLOC,
+            KODE_PST=KODE_PST,
+            KD_STATUS=KD_STATUS,
+            TEG_OPRS=TEG_OPRS,
+            PHASA=PHASA,
+            MERK=MERK,
+            TIPE=TIPE,
+            BUATAN=BUATAN,
+            THN_BUAT=THN_BUAT,
+            TGL_OPRS=TGL_OPRS,
+            PENEMPATAN=PENEMPATAN,
+            KETERANGAN=KETERANGAN,
+            FLAG=FLAG,
+            ID_KOMPARTEMEN=ID_KOMPARTEMEN,
+            ASSET=ASSET,
+            CONS_TYPE=CONS_TYPE,
+            ARUS_NOM_DISCH=ARUS_NOM_DISCH,
+            GAP_TYPE=GAP_TYPE,
+            CLASS_DISCH=CLASS_DISCH,
+            MCOV=MCOV,
+            JENIS=JENIS,
+            MTRL_OKSIDA=MTRL_OKSIDA,
+            TEG_NOM=TEG_NOM,
+            TEG_RATING=TEG_RATING,
+            ARUS_DISCH_MAX=ARUS_DISCH_MAX,
+            BIL=BIL,
+            RESIDUAL_5KA=RESIDUAL_5KA,
+            RESIDUAL_10KA=RESIDUAL_10KA,
+            RESIDUAL_20KA=RESIDUAL_20KA,
+            TINGGI=TINGGI,
+            BERAT=BERAT,
+            STANDART=STANDART,
+            PASANGAN=PASANGAN,
+            STACK=STACK,
+            TYPE_ID=TYPE_ID,
+            CCODE=CCODE
+        )
+        db.session.add(model)
+        db.session.commit()
+    print("Semua data peralatan LA berhasil dimasukan ke Database\n\n")
+        
+
+        
+
+
 
 def showMetaLA():
-    pass 
-
-
+    data_src = "data/peralatan/la.xlsx"
+    data = pd.read_excel(data_src)
+    data = data.loc[data['NMTRAGI'] == 'UPT SURABAYA']
+    print(data.dtypes)
     
-
-
 
 def showMetaPT():
     data_src = "data/peralatan/pt.xlsx"
@@ -685,15 +820,20 @@ def showMetaPT():
     print(data.dtypes)
 
 def queryProgress():
-    bay()
+    BAY()
     GI()
     PMT()
     PMS()
     CT()
     PT()
+    LA()
 
 import os 
 if __name__ == "__main__":
-    queryProgress()
+    # queryProgress()
+    showMetaLA()
+    
+    
+
     
     

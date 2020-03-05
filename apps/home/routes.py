@@ -5,7 +5,8 @@ from apps.home.models import (
     PMTModel, 
     PMSModel, 
     CTModel, 
-    PTModel
+    PTModel,
+    LAModel
 )
 import json
 
@@ -102,6 +103,7 @@ def pmtList(id_gi, ID_FUNCTLOC):
     query_pms = PMSModel.query.filter_by(ID_FUNCTLOC=ID_FUNCTLOC).all()
     query_ct = CTModel.query.filter_by(ID_FUNCTLOC=ID_FUNCTLOC).all()
     query_pt = PTModel.query.filter_by(ID_FUNCTLOC=ID_FUNCTLOC).all()
+    query_la = LAModel.query.filter_by(ID_FUNCTLOC=ID_FUNCTLOC).all()
     bayGI = BayModel.query.filter_by(ID_FUNCTLOC=ID_FUNCTLOC).first()
 
     queryNamaGI = GIModel.query.get(id_gi)
@@ -116,6 +118,7 @@ def pmtList(id_gi, ID_FUNCTLOC):
         PMS=query_pms,
         CT=query_ct,
         PT=query_pt,
+        LA=query_la,
         bayGI=bayGI,
         lat=lat, lon=lon,
         namaGI=namaGI

@@ -38,7 +38,7 @@
                                 <thead>
                                     <tr>
                                         <th>SERIAL_ID</th>
-                                        <th>THN_BUAT</th>
+                                        <th>STATUS_ALAT</th>
                                         <th>TGL_OPRS</th>
                                         <th>TEG_OPRS</th>
                                         <th>PHASA</th>
@@ -54,7 +54,7 @@
                                     {% for data in PMT %}
                                     <tr>
                                         <td>{{data.SERIAL_ID}}</td>
-                                        <td>{{data.THN_BUAT}}</td>
+                                        <td>{{data.STATUS_ALAT}}</td>
                                         <td>{{data.TGL_OPRS}}</td>
                                         <td>{{data.TEG_OPRS}}</td>
                                         <td>{{data.PHASA}}</td>
@@ -72,44 +72,44 @@
                         <!-- CONTENT -->
                     </div>
                     <div class="tab-pane fade" id="pills-pms" role="tabpanel" aria-labelledby="pills-pms-tab">
-                                               <!-- CONTENT -->
-                                               <div class="table-responsive" style="font-size: 14px;">
-                                                <table class="table table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>SERIAL_ID</th>
-                                                            <th>THN_BUAT</th>
-                                                            <th>TGL_OPRS</th>
-                                                            <th>TEG_OPRS</th>
-                                                            <th>PHASA</th>
-                                                            <th>ARUS_NOM</th>
-                                                            <th>MKNK_PGRK</th>
-                                                            <th>THN_KTK</th>
-                                                            <th>DUR_HUB_SING</th>
-                                                            <th>THN_KTK</th>
-                                                            <th>BERAT</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        {% for data in PMS %}
-                                                        <tr>
-                                                            <td>{{data.SERIAL_ID}}</td>
-                                                            <td>{{data.THN_BUAT}}</td>
-                                                            <td>{{data.TGL_OPRS}}</td>
-                                                            <td>{{data.TEG_OPRS}}</td>
-                                                            <td>{{data.PHASA}}</td>
-                                                            <td>{{data.ARUS_NOM}}</td>
-                                                            <td>{{data.MKNK_PGRK}}</td>
-                                                            <td>{{data.THN_KTK}}</td>
-                                                            <td>{{data.DUR_HUB_SING}}</td>
-                                                            <td>{{data.THN_KTK}}</td>
-                                                            <td>{{data.BERAT}}</td>
-                                                        </tr>
-                                                        {% endfor %}
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <!-- CONTENT -->
+                        <!-- CONTENT -->
+                        <div class="table-responsive" style="font-size: 14px;">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>SERIAL_ID</th>
+                                        <th>STATUS_ALAT</th>
+                                        <th>TGL_OPRS</th>
+                                        <th>TEG_OPRS</th>
+                                        <th>PHASA</th>
+                                        <th>ARUS_NOM</th>
+                                        <th>MKNK_PGRK</th>
+                                        <th>THN_KTK</th>
+                                        <th>DUR_HUB_SING</th>
+                                        <th>THN_KTK</th>
+                                        <th>BERAT</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for data in PMS %}
+                                    <tr>
+                                        <td>{{data.SERIAL_ID}}</td>
+                                        <td>{{data.STATUS_ALAT}}</td>
+                                        <td>{{data.TGL_OPRS}}</td>
+                                        <td>{{data.TEG_OPRS}}</td>
+                                        <td>{{data.PHASA}}</td>
+                                        <td>{{data.ARUS_NOM}}</td>
+                                        <td>{{data.MKNK_PGRK}}</td>
+                                        <td>{{data.THN_KTK}}</td>
+                                        <td>{{data.DUR_HUB_SING}}</td>
+                                        <td>{{data.THN_KTK}}</td>
+                                        <td>{{data.BERAT}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- CONTENT -->
                     </div>
                     <div class="tab-pane fade" id="pills-ct" role="tabpanel" aria-labelledby="pills-ct-tab">
                         <!-- CONTENT -->
@@ -117,6 +117,7 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
+                                        <th>SERIAL_ID</th>
                                         <th>STATUS_ALAT</th>
                                         <th>MERK</th>
                                         <th>PHASA</th>
@@ -132,17 +133,18 @@
                                 <tbody>
                                     {% for data in CT %}
                                     <tr>
-                                        <th>{{data.STATUS_ALAT}}</th>
-                                        <th>{{data.MERK}}</th>
-                                        <th>{{data.PHASA}}</th>
-                                        <th>{{data.I_RATED_PRI}}</th>
-                                        <th>{{data.I_RATED_SEC}}</th>
-                                        <th>{{data.TGL_OPRS}}</th>
-                                        <th>{{data.TEG_MAKS}}</th>
-                                        <th>{{data.I_THERM_CONT}}</th>
-                                        <th>{{data.BERAT_TOT}}</th>
-                                        <th>{{data.JML_CORE}}</th>
-                                        
+                                        <td>{{data.SERIAL_ID}}</td>
+                                        <td>{{data.STATUS_ALAT}}</td>
+                                        <td>{{data.MERK}}</td>
+                                        <td>{{data.PHASA}}</td>
+                                        <td>{{data.I_RATED_PRI}}</td>
+                                        <td>{{data.I_RATED_SEC}}</td>
+                                        <td>{{data.TGL_OPRS}}</td>
+                                        <td>{{data.TEG_MAKS}}</td>
+                                        <td>{{data.I_tdERM_CONT}}</td>
+                                        <td>{{data.BERAT_TOT}}</td>
+                                        <td>{{data.JML_CORE}}</td>
+
                                     </tr>
                                     {% endfor %}
                                 </tbody>
@@ -152,48 +154,92 @@
                     </div>
                     <div class="tab-pane fade" id="pills-pt" role="tabpanel" aria-labelledby="pills-pt-tab">
 
-                                                <!-- CONTENT -->
-                                                <div class="table-responsive" style="font-size: 14px;">
-                                                    <table class="table table-striped">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>STATUS_ALAT</th>
-                                                                <th>SERIAL_ID</th>
-                                                                <th>MERK</th>
-                                                                <th>TEG_OPRS</th>
-                                                                <th>PHASA</th>
-                                                                <th>TGL_OPRS</th>
-                                                                <th>TEG_MAKS</th>
-                                                                <th>TEG_PRIM</th>
-                                                                <th>TEG_SEC</th>
-                                                                <th>JML_CORE</th>
-                                                                <th>ISOLASI</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            {% for data in PT %}
-                                                            <tr>
-                                                                <th>{{ data.STATUS_ALAT }}</th>
-                                                                <th>{{ data.SERIAL_ID }}</th>
-                                                                <th>{{ data.MERK }}</th>
-                                                                <th>{{ data.TEG_OPRS }}</th>
-                                                                <th>{{ data.PHASA }}</th>
-                                                                <th>{{ data.TGL_OPRS }}</th>
-                                                                <th>{{ data.TEG_MAKS }}</th>
-                                                                <th>{{ data.TEG_PRIM }}</th>
-                                                                <th>{{ data.TEG_SEC }}</th>
-                                                                <th>{{ data.JML_CORE }}</th>
-                                                                <th>{{ data.ISOLASI }}</th>
-                                                                
-                                                            </tr>
-                                                            {% endfor %}
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <!-- CONTENT -->
+                        <!-- CONTENT -->
+                        <div class="table-responsive" style="font-size: 14px;">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>SERIAL_ID</th>
+                                        <th>STATUS_ALAT</th>
+                                        <th>SERIAL_ID</th>
+                                        <th>MERK</th>
+                                        <th>TEG_OPRS</th>
+                                        <th>PHASA</th>
+                                        <th>TGL_OPRS</th>
+                                        <th>TEG_MAKS</th>
+                                        <th>TEG_PRIM</th>
+                                        <th>TEG_SEC</th>
+                                        <th>JML_CORE</th>
+                                        <th>ISOLASI</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for data in PT %}
+                                    <tr>
+                                        <td>{{ data.SERIAL_ID}}</td>
+                                        <td>{{ data.STATUS_ALAT }}</td>
+                                        <td>{{ data.SERIAL_ID }}</td>
+                                        <td>{{ data.MERK }}</td>
+                                        <td>{{ data.TEG_OPRS }}</td>
+                                        <td>{{ data.PHASA }}</td>
+                                        <td>{{ data.TGL_OPRS }}</td>
+                                        <td>{{ data.TEG_MAKS }}</td>
+                                        <td>{{ data.TEG_PRIM }}</td>
+                                        <td>{{ data.TEG_SEC }}</td>
+                                        <td>{{ data.JML_CORE }}</td>
+                                        <td>{{ data.ISOLASI }}</td>
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- CONTENT -->
 
                     </div>
                     <div class="tab-pane fade" id="pills-la" role="tabpanel" aria-labelledby="pills-ct-tab">
+                        <!-- CONTENT -->
+                        <div class="table-responsive" style="font-size: 14px;">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>SERIAL_ID</th>
+                                        <th>STATUS_ALAT</th>
+                                        <th>SERIAL_ID</th>
+                                        <th>MERK</th>
+                                        <th>TEG_OPRS</th>
+                                        <th>PHASA</th>
+                                        <th>TGL_OPRS</th>
+                                        <th>TEG_NOM</th>
+                                        <th>TEG_RATING</th>
+                                        <th>ARUS_NOM_DISCH</th>
+                                        <th>CLASS_DISCH</th>
+                                        <th>TINGGI</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for data in LA %}
+                                    <tr>
+                                        <td>{{ data.SERIAL_ID }}</td>
+                                        <td>{{ data.STATUS_ALAT }}</td>
+                                        <td>{{ data.SERIAL_ID }}</td>
+                                        <td>{{ data.MERK }}</td>
+                                        <td>{{ data.TEG_OPRS }}</td>
+                                        <td>{{ data.PHASA }}</td>
+                                        <td>{{ data.TGL_OPRS }}</td>
+                                        <td>{{ data.TEG_NOM }}</td>
+                                        <td>{{ data.TEG_RATING }}</td>
+                                        <td>{{ data.ARUS_NOM_DISCH }}</td>
+                                        <td>{{ data.CLASS_DISCH }}</td>
+                                        <td>{{ data.TINGGI }}</td>
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- CONTENT -->
                     </div>
                 </div>
 
