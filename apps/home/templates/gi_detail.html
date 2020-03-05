@@ -16,6 +16,7 @@
               {% for BAY_, ID_ in  BAY_LIST | zip(ID_LIST) %}
               <tr>
                 <td><a href="{{ url_for('home.pmtList', id_gi=ID_GI, ID_FUNCTLOC=ID_) }}">{{BAY_}}</a></td>
+                <td></td>
               </tr>
               {% endfor %}
             </tbody>
